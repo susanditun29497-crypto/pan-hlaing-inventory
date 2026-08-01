@@ -15,6 +15,7 @@ const {data,error}=await supabaseClient
 .select(`
 id,
 remaining_quantity,
+purchase_date,
 products(
 id,
 food_type,
@@ -38,19 +39,66 @@ return;
 }
 
 
-productsList = data || [];
+const grouped = {};
 
-console.log("Loaded products:", productsList);
+
+data.forEach(batch=>{
+
+
+const product = batch.products;
+
+const key = product.id;
+
+
+
+if(!grouped[key]){
+
+grouped[key]={
+
+productId: product.id,
+
+brand:
+product.brands.brand_name,
+
+food_type:
+product.food_type,
+
+variety:
+product.variety,
+
+weight:
+product.weight,
+
+totalStock:0
+
+};
+
+}
+
+
+grouped[key].totalStock += batch.remaining_quantity;
+
+
+});
+
+
+productsList = Object.values(grouped);
+
+
+console.log("Grouped products:", productsList);
 
 
 }
 
 
 
+
+
+
+
 // ==========================
 // SEARCH PRODUCTS
 // ==========================
-
 function showProducts(keyword){
 
 
@@ -69,22 +117,20 @@ return;
 
 
 
-productsList.forEach(batch=>{
-
-
-const product = batch.products;
+productsList.forEach(product=>{
 
 
 const text =
-`${product.brands.brand_name} | ${product.food_type} | ${product.variety} | ${product.weight} | Stock: ${batch.remaining_quantity}`;
+`${product.brand} | ${product.food_type} | ${product.variety} | ${product.weight} | Stock: ${product.totalStock}`;
 
 
 
-const brandName =
-product.brands.brand_name;
+const searchText =
+text.toLowerCase();
 
 
-if(brandName.toLowerCase().includes(keyword.toLowerCase())){
+
+if(searchText.includes(keyword.toLowerCase())){
 
 
 const div=document.createElement("div");
@@ -102,7 +148,7 @@ div.onclick=function(){
 
 document
 .getElementById("productSelect")
-.value=batch.id;
+.value=product.productId;
 
 
 document
@@ -208,20 +254,23 @@ if(saleError) throw saleError;
 
 
 // Save all items
+// Save all items using FIFO
 
 for(const item of saleItems){
 
 
 
-const {data:batch,error:batchError}=await supabaseClient
+const {data:batches,error:batchError}=await supabaseClient
 
 .from("purchase_batches")
 
 .select("*")
 
-.eq("id",item.batchId)
+.eq("product_id",item.productId)
 
-.single();
+.gt("remaining_quantity",0)
+
+.order("purchase_date",{ascending:true});
 
 
 
@@ -229,17 +278,31 @@ if(batchError) throw batchError;
 
 
 
-if(batch.remaining_quantity < item.quantity){
+let remainingNeed = item.quantity;
 
-alert("Not enough stock");
 
-return;
+
+for(const batch of batches){
+
+
+
+if(remainingNeed <= 0){
+
+break;
 
 }
 
 
 
-// Insert sale item
+const takeQuantity =
+Math.min(
+remainingNeed,
+batch.remaining_quantity
+);
+
+
+
+// Create sale item
 
 const {error:itemError}=await supabaseClient
 
@@ -249,9 +312,9 @@ const {error:itemError}=await supabaseClient
 
 sale_id:sale.id,
 
-batch_id:item.batchId,
+batch_id:batch.id,
 
-quantity:item.quantity,
+quantity:takeQuantity,
 
 selling_price:item.sellingPrice
 
@@ -260,6 +323,7 @@ selling_price:item.sellingPrice
 
 
 if(itemError) throw itemError;
+
 
 
 
@@ -272,16 +336,33 @@ const {error:updateError}=await supabaseClient
 .update({
 
 remaining_quantity:
-batch.remaining_quantity - item.quantity
+batch.remaining_quantity - takeQuantity
 
 })
 
-.eq("id",item.batchId);
+.eq("id",batch.id);
 
 
 
 if(updateError) throw updateError;
 
+
+
+remainingNeed -= takeQuantity;
+
+
+
+}
+
+
+
+if(remainingNeed > 0){
+
+throw new Error(
+"Not enough stock available"
+);
+
+}
 
 
 }
@@ -344,7 +425,7 @@ console.log("Products loaded:", productsList);
 function addItemToSale(){
 
 
-const batchId =
+const productId =
 document.getElementById("productSelect").value;
 
 
@@ -357,7 +438,7 @@ Number(document.getElementById("sellingPrice").value);
 
 
 
-if(!batchId){
+if(!productId){
 
 alert("Please select a product");
 
@@ -392,7 +473,7 @@ document.getElementById("productSearch").value;
 
 saleItems.push({
 
-batchId:batchId,
+productId:productId,
 
 quantity:quantity,
 

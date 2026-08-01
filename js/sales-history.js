@@ -19,6 +19,7 @@ selling_price,
 
 
 purchase_batches(
+buying_price,
 
 products(
 
@@ -86,6 +87,7 @@ list.innerHTML="";
 
 
 let total = 0;
+let totalProfit = 0;
 
 
 
@@ -104,6 +106,18 @@ const saleId = item.sales.id;
 if(!grouped[saleId]){
 
 
+// grouped[saleId]={
+
+// date:item.sales.sale_date,
+
+// customer:item.sales.customer_name,
+
+// items:[],
+
+// total:0
+
+// };
+
 grouped[saleId]={
 
 date:item.sales.sale_date,
@@ -112,10 +126,11 @@ customer:item.sales.customer_name,
 
 items:[],
 
-total:0
+total:0,
+
+profit:0
 
 };
-
 
 }
 
@@ -126,13 +141,23 @@ item.purchase_batches.products;
 
 
 
+// const amount =
+// item.quantity * item.selling_price;
+
+
+
+// grouped[saleId].total += amount;
+
 const amount =
 item.quantity * item.selling_price;
 
-
+const profit =
+(item.selling_price - item.purchase_batches.buying_price)
+* item.quantity;
 
 grouped[saleId].total += amount;
 
+grouped[saleId].profit += profit;
 
 grouped[saleId].items.push({
 
@@ -141,7 +166,11 @@ name:
 
 quantity:item.quantity,
 
-price:item.selling_price
+buyPrice:item.purchase_batches.buying_price,
+
+price:item.selling_price,
+
+profit:profit
 
 });
 
@@ -158,6 +187,7 @@ Object.values(grouped).forEach((sale,index)=>{
 
 
 total += sale.total;
+totalProfit += sale.profit;
 
 
 const div=document.createElement("div");
@@ -169,7 +199,6 @@ div.className="card";
 
 let itemsHTML="";
 
-
 sale.items.forEach(item=>{
 
 
@@ -179,15 +208,25 @@ itemsHTML += `
 
 ${item.name}
 
-<br>
+|
 
 Qty:
 ${item.quantity}
 
 |
 
-Price:
+Buy:
+${item.buyPrice.toLocaleString()} MMK
+
+|
+
+Sell:
 ${item.price.toLocaleString()} MMK
+
+|
+
+Profit:
+${item.profit.toLocaleString()} MMK
 
 </p>
 
@@ -197,7 +236,6 @@ ${item.price.toLocaleString()} MMK
 });
 
 div.innerHTML = `
-
 
 <p>
 
@@ -212,19 +250,25 @@ ${sale.date}
 
 &nbsp; | &nbsp;
 
-Total:
+Sales:
 <strong>
 ${sale.total.toLocaleString()} MMK
 </strong>
 
-</p>
+&nbsp; | &nbsp;
 
+Profit:
+<strong>
+${sale.profit.toLocaleString()} MMK
+</strong>
+
+&nbsp; | &nbsp;
 
 <button onclick="toggleDetails(${index})">
-
 View Details
-
 </button>
+
+</p>
 
 
 
@@ -253,8 +297,10 @@ list.appendChild(div);
 });
 
 document.getElementById("totalSales").innerHTML =
-
-"Total: " + total.toLocaleString() + " MMK";
+"Sales: " + total.toLocaleString() +
+" MMK | Profit: " +
+totalProfit.toLocaleString() +
+" MMK";
 
 
 }

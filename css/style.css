@@ -221,3 +221,68 @@ font-weight:normal;
 cursor:pointer;
 
 }
+
+/* //stock summery for stock  */
+
+.stockSummary{
+
+display:flex;
+
+gap:10px;
+
+margin-bottom:15px;
+
+}
+
+.stockSummary .card{
+
+padding:10px 15px;
+
+flex:1;
+
+}
+
+.stockSummary h3{
+
+font-size:16px;
+
+margin-bottom:5px;
+
+}
+
+.stockSummary p{
+
+font-size:22px;
+
+font-weight:bold;
+
+margin:0;
+
+}
+
+.summaryRow{
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    margin:15px 0;
+}
+
+.summaryBox{
+    flex:0 0 220px;
+    background:#fff;
+    border:1px solid #ddd;
+    border-radius:8px;
+    padding:10px 14px;
+    text-align:center;
+}
+
+.summaryBox h3{
+    margin:0;
+    font-size:14px;
+}
+
+.summaryBox p{
+    margin-top:6px;
+    font-size:20px;
+    font-weight:bold;
+}

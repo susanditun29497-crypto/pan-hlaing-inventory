@@ -191,7 +191,6 @@ ${item.expiry || "-"}
 
 
 div.innerHTML=`
-
 <p>
 
 <strong>
@@ -205,21 +204,23 @@ ${purchase.date}
 
 &nbsp; | &nbsp;
 
-
 Total:
-
 <strong>
 ${purchase.total.toLocaleString()} MMK
 </strong>
 
-</p>
+&nbsp; | &nbsp;
 
-
-<button onclick="togglePurchase(${index})">
+<button 
+onclick="togglePurchase(${index})"
+style="padding:5px 10px;"
+>
 
 View Details
 
 </button>
+
+</p>
 
 
 <div 
