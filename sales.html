@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sales</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<h1>
+💰 Add Sale
+</h1>
+
+
+<form id="salesForm">
+
+
+<label>
+Customer Name
+</label>
+
+<input
+id="customerName"
+placeholder="Customer name"
+>
+
+
+<label>
+Search Product
+</label>
+
+<input 
+id="productSearch"
+placeholder="Type Royal, Toro, Felix..."
+>
+
+
+<div id="productResults"></div>
+
+<input 
+type="hidden"
+id="productSelect"
+>
+
+
+
+<label>
+Quantity
+</label>
+
+<input
+type="number"
+id="quantity"
+>
+<label>
+Selling Price (per item)
+</label>
+
+<input
+type="number"
+id="sellingPrice"
+>
+
+
+<button
+type="button"
+id="addItem"
+>
++ Add Item
+</button>
+
+
+<br><br>
+
+
+<h3>
+Current Sale
+</h3>
+
+
+<div id="saleItems">
+
+<p>
+No items added.
+</p>
+
+</div>
+
+
+<br>
+
+
+<button type="submit">
+Save Entire Sale
+</button>
+
+
+</form>
+
+
+<br>
+
+
+<button onclick="location.href='dashboard.html'">
+Back
+</button>
+
+
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="js/supabase.js"></script>
+
+<script src="js/sales.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Purchase</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<h1>
+📦 Add Purchase
+</h1>
+
+<form id="purchaseForm">
+
+<label>Brand</label>
+
+<select id="brand" required>
+    <option value="">Select Brand</option>
+</select>
+
+
+<label>Category</label>
+
+<select id="category" required>
+    <option value="">Select Category</option>
+</select>
+
+
+<label>Variety</label>
+
+<select id="variety" required>
+    <option value="">Select Variety</option>
+</select>
+
+
+<label>Weight</label>
+
+<select id="weight" required>
+    <option value="">Select Weight</option>
+</select>
+
+
+<label>Vendor</label>
+
+<select id="vendor" required>
+    <option value="">Select Vendor</option>
+</select>
+
+<label>
+Purchase Date
+</label>
+<div class="checkbox-row">
+
+<input
+type="checkbox"
+id="existingStock"
+>
+
+<label for="existingStock">
+Existing Stock (Use Today's Date)
+</label>
+
+</div>
+
+<input
+type="date"
+id="purchaseDate"
+required
+>
+
+
+<label>Quantity</label>
+
+<input
+type="number"
+id="quantity"
+required
+>
+
+
+<label>Buying Price (per item)</label>
+
+<input
+type="number"
+id="buyingPrice"
+required
+>
+
+<label>
+Expiry Month
+</label>
+
+<select id="expiryMonth">
+
+<option value="">Select Month</option>
+
+<option value="01">January</option>
+<option value="02">February</option>
+<option value="03">March</option>
+<option value="04">April</option>
+<option value="05">May</option>
+<option value="06">June</option>
+<option value="07">July</option>
+<option value="08">August</option>
+<option value="09">September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12">December</option>
+
+</select>
+
+
+<label>
+Expiry Year
+</label>
+
+<select id="expiryYear">
+
+<option value="">Select Year</option>
+
+<option>2026</option>
+<option>2027</option>
+<option>2028</option>
+<option>2029</option>
+<option>2030</option>
+<option>2031</option>
+
+</select>
+
+
+<button type="submit">
+Save Purchase
+</button>
+
+</form>
+
+
+<br>
+
+<button onclick="location.href='dashboard.html'">
+Back
+</button>
+
+
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/products.js"></script>
+
+<script src="js/supabase.js"></script>
+
+<script src="js/purchase.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sales History</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<h1>
+💰 Sales History
+</h1>
+
+<div>
+
+<button onclick="filterSales('today')">
+Today
+</button>
+
+
+<button onclick="filterSales('week')">
+This Week
+</button>
+
+
+<button onclick="filterSales('month')">
+This Month
+</button>
+
+
+</div>
+
+
+<h3 id="totalSales">
+Total: 0 MMK
+</h3>
+
+
+<div id="salesList">
+
+Loading...
+
+</div>
+
+
+<br>
+
+
+<button onclick="location.href='dashboard.html'">
+Back
+</button>
+
+
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="js/supabase.js"></script>
+
+<script src="js/sales-history.js"></script>
+
+
+</body>
+
+</html>
