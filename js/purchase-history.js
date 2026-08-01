@@ -3,7 +3,6 @@ async function loadPurchaseHistory(){
 
 const {data,error}=await supabaseClient
 
-
 .from("purchase_batches")
 
 .select(`
@@ -24,7 +23,6 @@ food_type,
 variety,
 
 weight,
-
 
 brands(
 
@@ -47,7 +45,6 @@ vendor_name
 
 
 
-
 if(error){
 
 console.log(error);
@@ -58,6 +55,85 @@ return;
 
 
 
+const grouped={};
+
+
+
+data.forEach(item=>{
+
+
+const key =
+item.purchase_date + "_" + item.vendors.vendor_name;
+
+
+
+if(!grouped[key]){
+
+
+grouped[key]={
+
+date:item.purchase_date,
+
+vendor:item.vendors.vendor_name,
+
+items:[],
+
+total:0
+
+};
+
+
+}
+
+
+
+const product=item.products;
+
+
+
+const amount =
+item.quantity * item.buying_price;
+
+
+grouped[key].total += amount;
+
+
+
+grouped[key].items.push({
+
+
+name:
+`${product.brands.brand_name} | ${product.food_type} | ${product.variety} | ${product.weight}`,
+
+quantity:item.quantity,
+
+price:item.buying_price,
+
+expiry:item.expiry_date
+
+
+});
+
+
+});
+
+
+
+
+displayPurchaseHistory(
+Object.values(grouped)
+);
+
+
+
+}
+
+
+
+
+function displayPurchaseHistory(data){
+
+
 const list =
 document.getElementById("purchaseList");
 
@@ -66,10 +142,7 @@ list.innerHTML="";
 
 
 
-data.forEach(item=>{
-
-
-const product=item.products;
+data.forEach((purchase,index)=>{
 
 
 const div=document.createElement("div");
@@ -78,27 +151,21 @@ const div=document.createElement("div");
 div.className="card";
 
 
-div.innerHTML=`
+
+let details="";
+
+
+
+purchase.items.forEach(item=>{
+
+
+details += `
 
 <p>
 
-Date:
-${item.purchase_date}
+${item.name}
 
-|
-
-<strong>
-${product.brands.brand_name}
-</strong>
-
-
-${product.food_type}
-
-
-${product.variety}
-
-${product.weight}
-|
+<br>
 
 Qty:
 ${item.quantity}
@@ -106,19 +173,66 @@ ${item.quantity}
 |
 
 Buy:
-${item.buying_price}
-
-|
-
-Vendor:
-${item.vendors.vendor_name}
+${item.price.toLocaleString()} MMK
 
 |
 
 Expiry:
-${item.expiry_date || "-"}
+${item.expiry || "-"}
 
 </p>
+
+`;
+
+
+});
+
+
+
+
+div.innerHTML=`
+
+<p>
+
+<strong>
+${purchase.vendor}
+</strong>
+
+&nbsp; | &nbsp;
+
+Date:
+${purchase.date}
+
+&nbsp; | &nbsp;
+
+
+Total:
+
+<strong>
+${purchase.total.toLocaleString()} MMK
+</strong>
+
+</p>
+
+
+<button onclick="togglePurchase(${index})">
+
+View Details
+
+</button>
+
+
+<div 
+id="purchase-detail-${index}"
+style="display:none;margin-top:10px;"
+>
+
+<hr>
+
+${details}
+
+</div>
+
 
 `;
 
@@ -127,8 +241,36 @@ ${item.expiry_date || "-"}
 list.appendChild(div);
 
 
+
 });
 
+
+}
+
+
+
+
+
+function togglePurchase(index){
+
+
+const box =
+document.getElementById(
+"purchase-detail-"+index
+);
+
+
+
+if(box.style.display==="none"){
+
+box.style.display="block";
+
+}
+else{
+
+box.style.display="none";
+
+}
 
 
 }

@@ -18,7 +18,29 @@ function populateDropdown(id, items){
 
 }
 
-populateDropdown("brand", INVENTORY_DATA.brands);
+function populateBrandSearch(){
+
+    const list =
+    document.getElementById("brandList");
+
+    list.innerHTML="";
+
+
+    INVENTORY_DATA.brands.forEach(brand=>{
+
+        const option =
+        document.createElement("option");
+
+        option.value = brand;
+
+        list.appendChild(option);
+
+    });
+
+}
+
+
+populateBrandSearch();
 
 populateDropdown("category", INVENTORY_DATA.categories);
 
@@ -331,10 +353,11 @@ alert("Purchase saved successfully!");
 
 
 
-document
-.getElementById("purchaseForm")
-.reset();
+document.getElementById("variety").value="";
 
+document.getElementById("quantity").value="";
+
+document.getElementById("buyingPrice").value="";
 
 
 }
