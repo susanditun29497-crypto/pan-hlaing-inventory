@@ -24,22 +24,29 @@
 💰 Sales History
 </h1>
 
-<div>
+<div class="salesFilterRow">
 
-<button onclick="filterSales('today')">
-Today
+<input
+id="customerSearch"
+placeholder="Search customer..."
+>
+
+
+<input
+type="date"
+id="fromDate"
+>
+
+
+<input
+type="date"
+id="toDate"
+>
+
+
+<button id="resetFilters">
+Reset
 </button>
-
-
-<button onclick="filterSales('week')">
-This Week
-</button>
-
-
-<button onclick="filterSales('month')">
-This Month
-</button>
-
 
 </div>
 

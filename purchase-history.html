@@ -19,11 +19,55 @@
 
 <div class="container">
 
-
 <h1>
 📦 Purchase History
 </h1>
 
+<div id="purchaseSummary" class="summaryRow">
+
+<div class="summaryBox">
+<h3>Purchase Value</h3>
+<p id="purchaseValue">0 MMK</p>
+</div>
+
+<div class="summaryBox">
+<h3>Total Units</h3>
+<p id="purchaseUnits">0</p>
+</div>
+
+<select id="vendorFilter">
+<option value="">All Vendors</option>
+</select>
+
+
+
+</div>
+
+<div class="historyFilters">
+
+<input
+id="search"
+placeholder="Search vendor, brand or variety..."
+>
+
+<input
+type="date"
+id="fromDate"
+>
+
+<input
+type="date"
+id="toDate"
+>
+
+<button
+type="button"
+id="resetFilters"
+>
+Reset
+</button>
+
+</div>
 
 <div id="purchaseList">
 

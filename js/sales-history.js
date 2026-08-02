@@ -328,101 +328,127 @@ box.style.display="none";
 
 }
 
-
-// Filter
-
-function filterSales(type){
+function applyFilters(){
 
 
-const today = new Date();
+const keyword =
+document
+.getElementById("customerSearch")
+.value
+.toLowerCase()
+.trim();
 
 
-let filtered = allSales;
+const fromDate =
+document
+.getElementById("fromDate")
+.value;
 
 
-
-if(type==="today"){
-
-
-const date =
-today.toISOString()
-.split("T")[0];
-
-
-filtered =
-allSales.filter(item =>
-item.sales.sale_date === date
-);
-
-
-}
+const toDate =
+document
+.getElementById("toDate")
+.value;
 
 
 
-if(type==="week"){
-
-
-const firstDay =
-new Date();
-
-
-firstDay.setDate(
-today.getDate()-7
-);
-
-
-
-filtered =
-allSales.filter(item =>
-new Date(item.sales.sale_date)
->= firstDay
-);
-
-
-}
-
-
-
-if(type==="month"){
-
-
-const month =
-today.getMonth();
-
-
-const year =
-today.getFullYear();
-
-
-
-filtered =
+const filtered =
 allSales.filter(item=>{
 
 
-const d =
-new Date(item.sales.sale_date);
+const customer =
+(item.sales.customer_name || "walk-in customer")
+.toLowerCase();
 
 
-return(
-d.getMonth()===month &&
-d.getFullYear()===year
-);
+
+if(keyword){
+
+if(!customer.includes(keyword)){
+
+return false;
+
+}
+
+}
+
+
+
+if(
+fromDate &&
+item.sales.sale_date < fromDate
+){
+
+return false;
+
+}
+
+
+
+if(
+toDate &&
+item.sales.sale_date > toDate
+){
+
+return false;
+
+}
+
+
+
+return true;
 
 
 });
-
-
-}
 
 
 
 displaySales(filtered);
 
 
-
-
-
 }
+
+document
+.getElementById("customerSearch")
+.addEventListener(
+"input",
+applyFilters
+);
+
+
+document
+.getElementById("fromDate")
+.addEventListener(
+"change",
+applyFilters
+);
+
+
+document
+.getElementById("toDate")
+.addEventListener(
+"change",
+applyFilters
+);
+
+document
+.getElementById("resetFilters")
+.addEventListener(
+"click",
+function(){
+
+
+document.getElementById("customerSearch").value="";
+
+document.getElementById("fromDate").value="";
+
+document.getElementById("toDate").value="";
+
+
+displaySales(allSales);
+
+
+});
 
 
 

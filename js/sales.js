@@ -485,13 +485,26 @@ productText:productText || "Product"
 
 
 
+// displaySaleItems();
+
+
+
+// document.getElementById("quantity").value="";
+
+// document.getElementById("sellingPrice").value="";
+
 displaySaleItems();
 
+// Clear for next product
+document.getElementById("productSearch").value = "";
+document.getElementById("productSelect").value = "";
+document.getElementById("productResults").innerHTML = "";
 
+document.getElementById("quantity").value = "";
+document.getElementById("sellingPrice").value = "";
 
-document.getElementById("quantity").value="";
-
-document.getElementById("sellingPrice").value="";
+// Put cursor back into search box
+document.getElementById("productSearch").focus();
 
 }
 

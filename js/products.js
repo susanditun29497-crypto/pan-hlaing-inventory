@@ -21,7 +21,8 @@ brands: [
 "Kit Cat",
 "Cherman",
 "Mckelly",
-"Paully"
+"Paully",
+"Hi-Life"
 
 ],
 
@@ -61,6 +62,7 @@ weights:{
 "Dry Food":[
 "380g",
 "400g",
+"900g",
 "1kg",
 "1.1kg",
 "1.2kg",
@@ -68,12 +70,15 @@ weights:{
 "2kg",
 "4kg",
 "10kg",
-"15kg"
+"15kg",
+"17kg"
 ],
 
 "Wet Food":[
+    "40g",
 "50g",
 "70g",
+"75g",
 "80g",
 "85g",
 "90g"
@@ -89,7 +94,8 @@ weights:{
 "Can":[
 "80g",
 "85g",
-"160g"
+"160g",
+"400g"
 ],
 
 "Cat Litter":[
@@ -113,10 +119,10 @@ products:{
 "Dental",
 "Urinary S/O",
 "Gastrointestinal",
-"Regular Sterilised",
+"Sterilised",
 "Renal",
-"Regular Sensible",
-"Regular Fit"
+"Sensible",
+"Fit"
 
 ],
 
@@ -207,8 +213,7 @@ products:{
 
 "Dry Food":[
 
-"Chicken",
-"Tuna and Rice"
+"Chicken Tuna and Rice"
 
 ],
 
@@ -257,6 +262,8 @@ products:{
 "Tuna Topping Katsuobushi in Gravy",
 "Tuna Topping Shrimp and Scallop in Gravy",
 "Tuna Topping Seabream in Gravy",
+"Tuna Topping chicken in Gravy",
+"Tuna Topping kanikama in Gravy",
 "Tuna Topping Katsuobushi in Jelly",
 "Tuna in Jelly",
 "Tuna Topping Sasami in Jelly",
@@ -323,7 +330,8 @@ products:{
 "Dry Food":[
 
 "Surfin' Favourites",
-"Seafood Sensations"
+"Seafood Sensations",
+"1kg Repack Seafood Sensations"
 
 ]
 
@@ -333,14 +341,19 @@ products:{
 
 "Wet Food":[
 
-"50g Orange Color",
-"50g Purple Color",
-"50g Red Color",
-"Tuna and Chicken Fillet Topping Dried Bonito",
+"50g Grilled tuna flake in Jelly with whitebait and scallop flavor",
+"50g Grilled tuna flake in Jelly with scallop and slice bonito flavor",
+"50g Grilled Chicken flake with crab stick in Jelly Scallop Flavor",
+"Tuna (Katsuo) and Chicken Fillet Topping Dried Bonito",
 "Tuna and Chicken Fillet Scallop Flavor",
 "Soup Chicken Fillet Topping Dried Bonito",
 "Soup Chicken Fillet and Maguro Topping Scallop with Fiber",
-"Soup Chicken Fillet and Maguro Topping Dried Bonito"
+"Soup Chicken Fillet and Maguro Topping Dried Bonito",
+"Tuna (Maguro) and Chicken Fillet scallop flavor",
+"Soup Tuna (Maguro) and Scallop Topping Chicken Fillet",
+"Soup Tuna (Katsuo) and Scallop Topping Chicken Fillet",
+"Chicken Fillet with Crab Stick Scallop Flavor",
+"Soup Chicken Fillet and Scallop"
 
 ],
 
@@ -387,6 +400,33 @@ products:{
 "Senior 7+ Chicken in Gravy",
 "Senior 7+ Tuna in Gravy"
 
+],
+
+"Creamy":[
+    "25 pcs Salmon Soft Cream with Shrimp Flavor",
+    "25 pcs Tuna Soft Cream with Abalone flavor",
+    "25 pcs Salmon Soft Cream with Lobster Flavor",
+    "25 pcs Tuna Soft Cream with Scallop Flavor",
+    "25 pcs Chicken Soft Cream with Wheat Grass Flavor",
+    "25 pcs Chicken Soft Cream with Alsaka Crab Flavor",
+    "40 pcs Tuna Soft Cream with Abalone Flavor",
+    "40 pcs Salmon Soft Cream with Lobster Flavor",
+    "40 pcs Salmon Soft Cream with Shrimp Flavor",
+    "40 pcs Chicken Soft Cream with Wheat Grass Flavor",
+    "40 pcs Chicken Soft Cream with Alaska Crab Flavor",
+    "40 pcs Tuna Soft Cream with Scallop Flavor",
+    "5 pcs Tuna Soft Cream with Scallop Flavor",
+    "5 pcs Chicken Soft Cream with Wheat Grass Flavor",
+    "5 pcs Tuna Soft Cream with Abalone Flavor",
+    "5 pcs Salmon Soft Cream with Shrimpt Flavor",
+    "5 pcs Salmon Soft Cream with Lobster Flavor",
+    "5 pcs Chicken Soft Cream with Alsaka Flavor",
+    "Salmon Soft Cream with Shrimp",
+    "Salmon Soft Cream with lobster flavor",
+    "Chicken Soft Cream with Wheat Grass flavor",
+    "Chicken Soft Cream with Alaska Crab",
+    "Tuna Soft Cream with Abalone Flavor",
+    "Tuna Soft Cream with Scallop Flavor"
 ]
 
 },
@@ -401,7 +441,8 @@ products:{
 "Tuna with Chicken Flake in Jelly",
 "Tuna with Chicken Flake in Gravy",
 "Tuna in Gravy",
-"Tuna with Salmon in Gravy"
+"Tuna with Salmon in Gravy",
+"Tuna with crabstick in Jelly"
 
 ]
 
@@ -448,6 +489,14 @@ products:{
 "Tuna Plus Fiber Mix Tuna and Katsuobushi with Scallop",
 "Tuna and Salmon Mix Tuna and Seafood Plus Lysine"
 
+],
+
+"Wet Food": [
+    "Skin and Coat",
+    "Indoor",
+    "Immunity",
+    "Urinary"
+
 ]
 
 },
@@ -493,6 +542,20 @@ products:{
 "Cat Litter":[
 
 "Lavender"
+
+]
+
+},
+
+
+
+"Hi-Life":{
+
+"Can":[
+
+"Mackeral with Tuna and Salmon",
+"Chicken with Duck",
+"Chicken with Salmon"
 
 ]
 

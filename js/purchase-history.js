@@ -1,3 +1,5 @@
+let purchaseHistoryData = [];
+
 async function loadPurchaseHistory(){
 
 
@@ -118,16 +120,48 @@ expiry:item.expiry_date
 });
 
 
+purchaseHistoryData =
+Object.values(grouped);
 
+populateFilters();
 
 displayPurchaseHistory(
-Object.values(grouped)
+purchaseHistoryData
 );
 
 
 
 }
 
+function populateFilters(){
+
+const vendorSelect =
+document.getElementById("vendorFilter");
+
+
+vendorSelect.innerHTML =
+'<option value="">All Vendors</option>';
+
+
+const vendors =
+[...new Set(
+purchaseHistoryData.map(p=>p.vendor)
+)].sort();
+
+vendors.forEach(vendor=>{
+
+const option =
+document.createElement("option");
+
+option.value = vendor;
+option.textContent = vendor;
+
+vendorSelect.appendChild(option);
+
+});
+
+
+}
 
 
 
@@ -140,10 +174,20 @@ document.getElementById("purchaseList");
 
 list.innerHTML="";
 
+let purchaseValue = 0;
+let purchaseUnits = 0;
+
 
 
 data.forEach((purchase,index)=>{
 
+    purchaseValue += purchase.total;
+
+purchase.items.forEach(item=>{
+
+purchaseUnits += item.quantity;
+
+});
 
 const div=document.createElement("div");
 
@@ -245,6 +289,12 @@ list.appendChild(div);
 
 });
 
+document.getElementById("purchaseValue").innerText =
+purchaseValue.toLocaleString() + " MMK";
+
+document.getElementById("purchaseUnits").innerText =
+purchaseUnits.toLocaleString();
+
 
 }
 
@@ -276,6 +326,131 @@ box.style.display="none";
 
 }
 
+function applyFilters(){
+
+const keyword =
+document
+.getElementById("search")
+.value
+.toLowerCase()
+.trim();
+
+const vendor =
+document
+.getElementById("vendorFilter")
+.value;
+
+
+const fromDate =
+document
+.getElementById("fromDate")
+.value;
+
+const toDate =
+document
+.getElementById("toDate")
+.value;
+
+const filtered =
+purchaseHistoryData.filter(purchase=>{
+
+const searchText = `
+${purchase.vendor}
+${purchase.items.map(i=>i.name).join(" ")}
+`
+.toLowerCase();
+
+if(keyword){
+
+const words =
+keyword.split(/\s+/);
+
+if(
+!words.every(word=>searchText.includes(word))
+){
+return false;
+}
+
+}
+
+if(
+vendor &&
+purchase.vendor !== vendor
+){
+return false;
+}
+
+
+if(
+fromDate &&
+purchase.date < fromDate
+){
+return false;
+}
+
+if(
+toDate &&
+purchase.date > toDate
+){
+return false;
+}
+
+return true;
+
+});
+
+displayPurchaseHistory(filtered);
+
+}
+
+document
+.getElementById("search")
+.addEventListener(
+"input",
+applyFilters
+);
+
+document
+.getElementById("vendorFilter")
+.addEventListener(
+"change",
+applyFilters
+);
+
+
+document
+.getElementById("fromDate")
+.addEventListener(
+"change",
+applyFilters
+);
+
+document
+.getElementById("toDate")
+.addEventListener(
+"change",
+applyFilters
+);
+
+document
+.getElementById("resetFilters")
+.addEventListener(
+"click",
+function(){
+
+document.getElementById("search").value = "";
+
+document.getElementById("vendorFilter").value = "";
+
+
+document.getElementById("fromDate").value = "";
+
+document.getElementById("toDate").value = "";
+
+applyFilters();
+
+}
+);
 
 
 loadPurchaseHistory();

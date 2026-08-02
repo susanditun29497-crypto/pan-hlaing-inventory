@@ -115,16 +115,64 @@ item.expiry_date
 
 });
 
+stockListData = Object.values(stock);
 
-
-stockListData =
-Object.values(stock);
-
-
+// Populate filters
+populateFilters();
 
 displayStock(stockListData);
 
 
+
+}
+
+
+// ADD THIS ENTIRE FUNCTION HERE
+function populateFilters(){
+
+const brandSelect =
+document.getElementById("brandFilter");
+
+const categorySelect =
+document.getElementById("categoryFilter");
+
+brandSelect.innerHTML =
+'<option value="">All Brands</option>';
+
+categorySelect.innerHTML =
+'<option value="">All Categories</option>';
+
+const brands =
+[...new Set(stockListData.map(p=>p.brand))]
+.sort();
+
+const categories =
+[...new Set(stockListData.map(p=>p.food_type))]
+.sort();
+
+brands.forEach(brand=>{
+
+const option =
+document.createElement("option");
+
+option.value = brand;
+option.textContent = brand;
+
+brandSelect.appendChild(option);
+
+});
+
+categories.forEach(category=>{
+
+const option =
+document.createElement("option");
+
+option.value = category;
+option.textContent = category;
+
+categorySelect.appendChild(option);
+
+});
 
 }
 
@@ -285,62 +333,36 @@ stockList.appendChild(div);
 
 });
 
-const summary =
-document.getElementById("stockSummary");
+document.getElementById("inventoryValue").innerText =
+inventoryValue.toLocaleString() + " MMK";
 
-summary.innerHTML = `
-
-<div class="summaryBox">
-<h3>Inventory Value</h3>
-<p>${inventoryValue.toLocaleString()} MMK</p>
-</div>
-
-<div class="summaryBox">
-<h3>Total Units</h3>
-<p>${totalUnits.toLocaleString()}</p>
-</div>
-
-`;
+document.getElementById("totalUnits").innerText =
+totalUnits.toLocaleString();
 
 }
 
 
-
-
-// Search by brand name
-
-document
-.getElementById("search")
-.addEventListener(
-"input",
-function(){
-
+function applyFilters(){
 
 const keyword =
-this.value.toLowerCase();
+document.getElementById("search")
+.value
+.toLowerCase()
+.trim();
 
+const brand =
+document.getElementById("brandFilter").value;
 
+const category =
+document.getElementById("categoryFilter").value;
 
-// const filtered =
-// stockListData.filter(product=> {
-
-
-// const searchText =
-
-// `${product.brand}
-// ${product.food_type}
-// ${product.variety}
-// ${product.weight}`
-
-// .toLowerCase();
-
-// return searchText.includes(keyword);
-
-
-// });
+const words =
+keyword === ""
+? []
+: keyword.split(/\s+/);
 
 const filtered =
-stockListData.filter(product => {
+stockListData.filter(product=>{
 
 const searchText = `
 ${product.brand}
@@ -350,24 +372,49 @@ ${product.weight}
 `
 .toLowerCase();
 
-const words = keyword
-.toLowerCase()
-.trim()
-.split(/\s+/);
-
-return words.every(word =>
+const searchMatch =
+words.every(word =>
 searchText.includes(word)
 );
 
-});
+const brandMatch =
+!brand ||
+product.brand === brand;
 
+const categoryMatch =
+!category ||
+product.food_type === category;
+
+return searchMatch &&
+brandMatch &&
+categoryMatch;
+
+});
 
 displayStock(filtered);
 
+}
 
+document
+.getElementById("search")
+.addEventListener(
+"input",
+applyFilters
+);
 
-});
+document
+.getElementById("brandFilter")
+.addEventListener(
+"change",
+applyFilters
+);
 
+document
+.getElementById("categoryFilter")
+.addEventListener(
+"change",
+applyFilters
+);
 
 
 
