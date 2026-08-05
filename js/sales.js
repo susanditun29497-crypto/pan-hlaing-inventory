@@ -109,11 +109,19 @@ document.getElementById("productResults");
 results.innerHTML="";
 
 
-if(keyword===""){
+if(keyword.trim()===""){
 
 return;
 
 }
+
+
+
+const words =
+keyword
+.toLowerCase()
+.trim()
+.split(/\s+/);
 
 
 
@@ -126,11 +134,24 @@ const text =
 
 
 const searchText =
-text.toLowerCase();
+`
+${product.brand}
+${product.food_type}
+${product.variety}
+${product.weight}
+`
+.toLowerCase();
 
 
 
-if(searchText.includes(keyword.toLowerCase())){
+const matched =
+words.every(word =>
+searchText.includes(word)
+);
+
+
+
+if(matched){
 
 
 const div=document.createElement("div");

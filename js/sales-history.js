@@ -183,7 +183,9 @@ profit:profit
 // Display grouped sales
 // Display grouped sales
 
-Object.values(grouped).forEach((sale,index)=>{
+Object.values(grouped)
+.sort((a,b)=> new Date(b.date) - new Date(a.date))
+.forEach((sale,index)=>{
 
 
 total += sale.total;

@@ -22,8 +22,9 @@ brands: [
 "Cherman",
 "Mckelly",
 "Paully",
-"Hi-Life"
-
+"Hi-Life",
+"Temptations",
+"CIAO Sugoi"
 ],
 
 
@@ -35,6 +36,7 @@ categories:[
 "Creamy",
 "Can",
 "Cat Litter",
+"Snack",
 "Toy"
 
 ],
@@ -51,6 +53,7 @@ vendors:[
 "Tone Tone",
 "Royal Canin Myanmar",
 "Eldorado",
+"Myeik",
 "Other"
 
 ],
@@ -85,7 +88,9 @@ weights:{
 ],
 
 "Creamy":[
+    "5 pcs",
 "20 pcs",
+"25 pcs",
 "40 pcs",
 "50 pcs",
 "52 pcs"
@@ -95,6 +100,8 @@ weights:{
 "80g",
 "85g",
 "160g",
+"195g",
+"200g",
 "400g"
 ],
 
@@ -103,12 +110,33 @@ weights:{
 "10L"
 ],
 
+"Snack":[
+    "100g",
+    "200g"
+],
+
 "Toy":[]
 
 },
 
 
 products:{
+
+
+"Temptations":{
+    "Snack":[
+        "Tempting Tuna Flavor"
+    ]
+},
+
+"CIAO Sugoi":{
+    "Snack":[
+    
+        "Prebiotics with Dried Bonito Chicken",
+        "Prebiotics with Dried Bonito Tuna",
+        "Prebiotics with Dried Bonito Salmon"
+    ]
+},
 
 "Royal Canin":{
 
@@ -223,6 +251,7 @@ products:{
 "Indoor Chicken in Jelly",
 "Skin and Coat Crab Meat in Jelly",
 "Skin and Coat 5fish in Jelly",
+"Shrimp in Jelly",
 "Skin and Coat Salmon and Cod in Gravy",
 "Tuna in Steamed Egg",
 "Scallop Gravy",
@@ -454,7 +483,8 @@ products:{
 "Wet Food":[
 
 "Tuna and Shrimp in Jelly",
-"Chicken and Veggie in Jelly"
+"Chicken and Veggie in Jelly",
+"Tuna in Jelly"
 
 ]
 

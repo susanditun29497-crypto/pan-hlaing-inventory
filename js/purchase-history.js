@@ -121,7 +121,9 @@ expiry:item.expiry_date
 
 
 purchaseHistoryData =
-Object.values(grouped);
+Object.values(grouped)
+
+.sort((a,b)=> new Date(b.date) - new Date(a.date));
 
 populateFilters();
 
