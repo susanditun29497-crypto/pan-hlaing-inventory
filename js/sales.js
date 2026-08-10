@@ -599,3 +599,218 @@ document
 "click",
 addItemToSale
 );
+
+document
+.getElementById("showVoucherButton")
+.addEventListener(
+"click",
+showVoucher
+);
+
+
+// ==========================
+// SALES VOUCHER
+// ==========================
+// ==========================
+// SALES VOUCHER
+// ==========================
+function showVoucher(){
+
+    console.log("SHOW VOUCHER CLICKED");
+
+
+    const customerName =
+        document.getElementById("customerName").value;
+
+    const customerPhone =
+        document.getElementById("customerPhone").value;
+
+    const customerAddress =
+        document.getElementById("customerAddress").value;
+
+
+    // Delivery fee is ONLY for the voucher.
+    // It is NOT saved to the database.
+    const deliveryFeeInput =
+        document.getElementById("deliveryFee").value.trim();
+
+    const deliveryFee =
+        deliveryFeeInput === ""
+            ? null
+            : Number(deliveryFeeInput);
+
+
+    const today =
+        new Date().toISOString().split("T")[0];
+
+
+    // ==========================
+    // CUSTOMER INFORMATION
+    // ==========================
+
+    document.getElementById("voucherDate").innerText =
+        today;
+
+
+    document.getElementById("voucherCustomer").innerText =
+        customerName || "Walk-in Customer";
+
+
+    document.getElementById("voucherPhone").innerText =
+        customerPhone || "-";
+
+
+    document.getElementById("voucherAddress").innerText =
+        customerAddress || "-";
+
+
+    // ==========================
+    // VOUCHER ITEMS
+    // ==========================
+
+    const voucherItems =
+        document.getElementById("voucherItems");
+
+
+    voucherItems.innerHTML = "";
+
+    voucherItems.innerHTML = `
+
+    <div class="voucher-item-header">
+
+        <span>ပစ္စည်းအမည်</span>
+
+        <span>ခုရေ</span>
+
+        <span>နှုန်း</span>
+
+        <span>သင့်ငွေ</span>
+
+    </div>
+
+`;
+
+
+    let total = 0;
+
+
+    saleItems.forEach(item => {
+
+        const amount =
+            item.quantity * item.sellingPrice;
+
+
+        total += amount;
+
+
+        const div =
+            document.createElement("div");
+
+
+        div.className = "voucher-item";
+
+
+        // Remove Stock information from customer voucher
+        const cleanProductText =
+            item.productText
+                .split(" | Stock:")[0];
+
+
+        div.innerHTML = `
+
+            <div class="voucher-product">
+                ${cleanProductText}
+            </div>
+
+            <span class="voucher-qty">
+                × ${item.quantity}
+            </span>
+
+            <span class="voucher-unit-price">
+                ${item.sellingPrice.toLocaleString()} MMK
+            </span>
+
+            <strong class="voucher-amount">
+                ${amount.toLocaleString()} MMK
+            </strong>
+
+        `;
+
+
+        voucherItems.appendChild(div);
+
+    });
+
+
+    // ==========================
+    // DELIVERY FEE
+    // ==========================
+
+    // If delivery fee is empty,
+    // it displays "-" but counts as 0.
+    const deliveryAmount =
+        deliveryFee === null
+            ? 0
+            : deliveryFee;
+
+
+    const deliveryDisplay =
+        deliveryFee === null
+            ? "-"
+            : deliveryFee.toLocaleString() + " MMK";
+
+
+    // ==========================
+    // GRAND TOTAL
+    // ==========================
+
+    const grandTotal =
+        total + deliveryAmount;
+
+
+    // ==========================
+    // DISPLAY TOTAL
+    // ==========================
+
+    document.getElementById("voucherTotal").innerHTML = `
+
+        <div>
+            စုစုပေါင်း:
+            <strong>
+                ${total.toLocaleString()} MMK
+            </strong>
+        </div>
+
+        <div>
+            ပို့ဆောင်ခ:
+            <strong>
+                ${deliveryDisplay}
+            </strong>
+        </div>
+
+        <div style="margin-top:8px; font-size:18px;">
+            သင့်ငွေ:
+            <strong>
+                ${grandTotal.toLocaleString()} MMK
+            </strong>
+        </div>
+
+    `;
+
+
+    // ==========================
+    // SHOW VOUCHER
+    // ==========================
+
+    document.getElementById("voucherOverlay").style.display =
+        "flex";
+
+}
+
+
+function closeVoucher(){
+
+    document.getElementById("voucherOverlay").style.display =
+        "none";
+
+}

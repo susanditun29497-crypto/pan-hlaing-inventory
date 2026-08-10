@@ -1,4 +1,5 @@
 let stockListData = [];
+let lowStockOnly = false;
 
 
 
@@ -208,24 +209,43 @@ let warning="";
 
 
 // Low stock rule
+// Low stock rule
 
 if(
-product.food_type === "Dry Food"
-&& product.quantity === 0
+    product.food_type === "Dry Food"
+    && product.quantity === 0
 ){
 
-warning="⚠️ OUT OF STOCK";
-
+    warning = "⚠️ OUT OF STOCK";
 
 }
 
-
-if(
-product.food_type !== "Dry Food"
-&& product.quantity < 12
+else if(
+    product.food_type === "Wet Food"
+    && product.quantity < 24
 ){
 
-warning="⚠️ LOW STOCK";
+    warning = "⚠️ LOW STOCK";
+
+}
+
+else if(
+    product.food_type === "Creamy"
+    && product.quantity < 5
+){
+
+    warning = "⚠️ LOW STOCK";
+
+}
+
+else if(
+    product.food_type !== "Dry Food"
+    && product.food_type !== "Wet Food"
+    && product.food_type !== "Creamy"
+    && product.quantity < 12
+){
+
+    warning = "⚠️ LOW STOCK";
 
 }
 
@@ -344,54 +364,76 @@ totalUnits.toLocaleString();
 
 function applyFilters(){
 
-const keyword =
-document.getElementById("search")
-.value
-.toLowerCase()
-.trim();
+    const keyword =
+        document.getElementById("search")
+        .value
+        .toLowerCase()
+        .trim();
 
-const brand =
-document.getElementById("brandFilter").value;
+    const brand =
+        document.getElementById("brandFilter").value;
 
-const category =
-document.getElementById("categoryFilter").value;
+    const category =
+        document.getElementById("categoryFilter").value;
 
-const words =
-keyword === ""
-? []
-: keyword.split(/\s+/);
+    const words =
+        keyword === ""
+        ? []
+        : keyword.split(/\s+/);
 
-const filtered =
-stockListData.filter(product=>{
+    const filtered =
+        stockListData.filter(product => {
 
-const searchText = `
-${product.brand}
-${product.food_type}
-${product.variety}
-${product.weight}
-`
-.toLowerCase();
+            const searchText = `${product.brand}
+            ${product.food_type}
+            ${product.variety}
+            ${product.weight}`
+            .toLowerCase();
 
-const searchMatch =
-words.every(word =>
-searchText.includes(word)
-);
+            const searchMatch =
+                words.every(word =>
+                    searchText.includes(word)
+                );
 
-const brandMatch =
-!brand ||
-product.brand === brand;
+            const brandMatch =
+                !brand ||
+                product.brand === brand;
 
-const categoryMatch =
-!category ||
-product.food_type === category;
+            const categoryMatch =
+                !category ||
+                product.food_type === category;
+const lowStockMatch =
+    !lowStockOnly ||
+    (
+        product.food_type === "Dry Food"
+        && product.quantity === 0
+    )
+    ||
+    (
+        product.food_type === "Wet Food"
+        && product.quantity < 24
+    )
+    ||
+    (
+        product.food_type === "Creamy"
+        && product.quantity < 5
+    )
+    ||
+    (
+        product.food_type !== "Dry Food"
+        && product.food_type !== "Wet Food"
+        && product.food_type !== "Creamy"
+        && product.quantity < 12
+    );
 
-return searchMatch &&
-brandMatch &&
-categoryMatch;
+            return searchMatch &&
+                   brandMatch &&
+                   categoryMatch &&
+                   lowStockMatch;
 
-});
+        });
 
-displayStock(filtered);
+    displayStock(filtered);
 
 }
 
@@ -414,6 +456,24 @@ document
 .addEventListener(
 "change",
 applyFilters
+);
+
+document
+.getElementById("lowStockBtn")
+.addEventListener(
+    "click",
+    function(){
+
+        lowStockOnly = !lowStockOnly;
+
+        this.classList.toggle(
+            "active",
+            lowStockOnly
+        );
+
+        applyFilters();
+
+    }
 );
 
 

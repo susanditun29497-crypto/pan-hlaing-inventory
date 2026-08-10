@@ -37,6 +37,38 @@ id="customerName"
 placeholder="Customer name"
 >
 
+<label>
+Customer Phone
+</label>
+
+<input
+id="customerPhone"
+placeholder="Customer phone"
+>
+
+<label>
+Customer Address
+</label>
+
+<input
+id="customerAddress"
+placeholder="Customer address"
+>
+
+
+<label>
+Delivery Fees
+</label>
+
+<input
+    type="number"
+    id="deliveryFee"
+    placeholder="Delivery fee"
+    min="0"
+>
+
+
+
 
 <label>
 Search Product
@@ -102,6 +134,11 @@ No items added.
 
 <br>
 
+<button type="button" id="showVoucherButton">
+
+Show Voucher
+
+</button>
 
 <button type="submit">
 Save Entire Sale
@@ -121,6 +158,89 @@ Back
 
 </div>
 
+ <!-- closes .container -->
+
+
+<!-- VOUCHER POPUP START -->
+
+<div id="voucherOverlay" class="voucher-overlay">
+<div class="voucher-box">
+
+    <div class="voucher-header">
+
+        <h2>🐾 PAN HLAING PET FOOD SHOP</h2>
+
+        <p>Made for Your Cats' Needs 💜</p>
+
+    </div>
+
+
+    <div class="voucher-line"></div>
+
+
+    <div class="voucher-customer-info">
+
+        <p>
+            <strong>Date:</strong>
+            <span id="voucherDate"></span>
+        </p>
+
+        <p>
+            <strong>Customer:</strong>
+            <span id="voucherCustomer"></span>
+        </p>
+
+        <p>
+            <strong>Phone:</strong>
+            <span id="voucherPhone"></span>
+        </p>
+
+        <p>
+            <strong>Address:</strong>
+            <span id="voucherAddress"></span>
+        </p>
+
+    </div>
+
+
+    <div class="voucher-line"></div>
+
+
+    <div id="voucherItems"></div>
+
+
+    <div class="voucher-line"></div>
+
+
+    <div id="voucherTotal" class="voucher-total"></div>
+
+
+    <div class="voucher-line"></div>
+
+
+    <p class="voucher-thank-you">
+        ဝယ်ယူအားပေးမှုအတွက်အထူးကျေးဇူးတင်ပါတယ်ရှင့်။
+        ဝယ်ပြီးပစ္စည်းပြန်မလဲပေးပါ။
+    </p>
+
+
+
+    <button
+        type="button"
+        class="voucher-close"
+        onclick="closeVoucher()"
+    >
+        Close
+    </button>
+
+</div>
+
+</div>
+
+<!-- VOUCHER POPUP END -->
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>

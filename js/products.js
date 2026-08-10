@@ -252,8 +252,10 @@ products:{
 "Skin and Coat Crab Meat in Jelly",
 "Skin and Coat 5fish in Jelly",
 "Shrimp in Jelly",
+"Tuna topping Squid in Jelly",
 "Skin and Coat Salmon and Cod in Gravy",
 "Tuna in Steamed Egg",
+"Chicken in Steamed Egg",
 "Scallop Gravy",
 "Indoor Tuna and Chicken in Gravy",
 "Lamb in Gravy",
@@ -275,7 +277,8 @@ products:{
 "Salmon and Tomato in Jelly",
 "Tuna in Jelly",
 "Salmon in Jelly",
-"Chicken in Jelly"
+"Chicken in Jelly",
+"Chicken in Gravy",
 
 ]
 
@@ -484,7 +487,9 @@ products:{
 
 "Tuna and Shrimp in Jelly",
 "Chicken and Veggie in Jelly",
-"Tuna in Jelly"
+"Tuna in Jelly",
+"Tuna and Samon in Jelly",
+"Tuna and Chicken in Jelly"
 
 ]
 
@@ -510,14 +515,16 @@ products:{
 "Creamy":[
 
 "Toro Box 52 pcs",
-"Toro Plus White Meat Tuna with Lobster",
 "Tuna Plus Goat Milk",
 "Tuna Plus Fiber",
 "Tuna and Salmon",
 "Tuna and Katsuobushi",
 "Tuna Plus Goat Milk Mix Tuna and Katsuobushi",
 "Tuna Plus Fiber Mix Tuna and Katsuobushi with Scallop",
-"Tuna and Salmon Mix Tuna and Seafood Plus Lysine"
+"Tuna and Salmon Mix Tuna and Seafood Plus Lysine",
+"Toro Plus White Meat Tuna with Lobster",
+"Toro Plus White Meat Tuna with Katsuobushi",
+"Toro Plus White Meat Tuna with Alaska Salmon"
 
 ],
 
@@ -525,7 +532,8 @@ products:{
     "Skin and Coat",
     "Indoor",
     "Immunity",
-    "Urinary"
+    "Urinary",
+    "Digestive and Hairball"
 
 ]
 
