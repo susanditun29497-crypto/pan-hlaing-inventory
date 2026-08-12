@@ -46,7 +46,8 @@ sales(
 id,
 sale_date,
 
-customer_name
+customer_name,
+payment_status
 
 )
 
@@ -120,9 +121,11 @@ if(!grouped[saleId]){
 
 grouped[saleId]={
 
+     id:item.sales.id,
 date:item.sales.sale_date,
 
 customer:item.sales.customer_name,
+ paymentStatus:item.sales.payment_status,
 
 items:[],
 
@@ -254,15 +257,23 @@ ${sale.date}
 
 Sales:
 <strong>
-${sale.total.toLocaleString()} MMK
+${sale.total.toLocaleString()}
 </strong>
 
 &nbsp; | &nbsp;
 
 Profit:
 <strong>
-${sale.profit.toLocaleString()} MMK
+${sale.profit.toLocaleString()}
 </strong>
+
+&nbsp; | &nbsp;
+
+
+${getPaymentStatusOptions(
+    sale.id,
+    sale.paymentStatus
+)}
 
 &nbsp; | &nbsp;
 
@@ -304,6 +315,70 @@ document.getElementById("totalSales").innerHTML =
 totalProfit.toLocaleString() +
 " MMK";
 
+
+}
+
+function getPaymentStatusOptions(saleId, currentStatus){
+
+    return `
+        <select
+            onchange="updatePaymentStatus(${saleId}, this.value)"
+            class="payment-status-select"
+        >
+
+            <option value="COD_PENDING"
+                ${currentStatus === "COD_PENDING" ? "selected" : ""}>
+                🟠 COD Pending
+            </option>
+
+            <option value="COD_RECEIVED"
+                ${currentStatus === "COD_RECEIVED" ? "selected" : ""}>
+                🟢 COD Received
+            </option>
+
+            <option value="PREPAID_PENDING"
+                ${currentStatus === "PREPAID_PENDING" ? "selected" : ""}>
+                🟡 Prepaid Pending
+            </option>
+
+            <option value="PREPAID_RECEIVED"
+                ${currentStatus === "PREPAID_RECEIVED" ? "selected" : ""}>
+                🔵 Prepaid Received
+            </option>
+
+        </select>
+    `;
+
+}
+
+async function updatePaymentStatus(saleId, newStatus){
+
+    const { error } = await supabaseClient
+
+        .from("sales")
+
+        .update({
+            payment_status: newStatus
+        })
+
+        .eq("id", saleId);
+
+
+    if(error){
+
+        console.log(error);
+
+        alert("Failed to update payment status.");
+
+        return;
+
+    }
+
+    console.log(
+        "Payment status updated:",
+        saleId,
+        newStatus
+    );
 
 }
 
@@ -352,6 +427,9 @@ document
 .getElementById("toDate")
 .value;
 
+const paymentStatus =
+    document.getElementById("paymentFilter").value;
+
 
 
 const filtered =
@@ -397,6 +475,15 @@ return false;
 }
 
 
+if(
+    paymentStatus &&
+    item.sales.payment_status !== paymentStatus
+){
+
+    return false;
+
+}
+
 
 return true;
 
@@ -434,6 +521,13 @@ applyFilters
 );
 
 document
+.getElementById("paymentFilter")
+.addEventListener(
+    "change",
+    applyFilters
+);
+
+document
 .getElementById("resetFilters")
 .addEventListener(
 "click",
@@ -445,6 +539,7 @@ document.getElementById("customerSearch").value="";
 document.getElementById("fromDate").value="";
 
 document.getElementById("toDate").value="";
+document.getElementById("paymentFilter").value="";
 
 
 displaySales(allSales);

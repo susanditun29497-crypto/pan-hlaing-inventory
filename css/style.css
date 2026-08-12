@@ -561,3 +561,31 @@ padding:10px 15px;
 .low-stock-btn.active{
     background:#198754;
 }
+
+.payment-status-select {
+    display: inline-block;
+    width: auto;
+    min-width: 145px;
+    max-width: 170px;
+    padding: 3px 5px;
+    font-size: 13px;
+    vertical-align: middle;
+    margin-left: 3px;
+}
+
+.sales-history-line {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.salesFilterRow select#paymentFilter {
+    width: 150px;
+    min-width: 150px;
+    max-width: 150px;
+}
+
+#salesList .card {
+    padding-left: 0;
+}

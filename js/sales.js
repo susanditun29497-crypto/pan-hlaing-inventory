@@ -261,7 +261,11 @@ sale_date:new Date()
 .toISOString()
 .split("T")[0],
 
-customer_name:customerName || null
+customer_name:customerName || null,
+
+
+payment_status:
+    document.getElementById("paymentStatus").value
 
 })
 
