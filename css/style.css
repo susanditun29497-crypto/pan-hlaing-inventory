@@ -457,6 +457,8 @@ padding:10px 15px;
     display: grid;
     grid-template-columns: minmax(0, 1fr) 50px 110px 120px;
     gap: 10px;
+    /* grid-template-columns: minmax(0, 1fr) 60px 110px 120px;
+gap: 1px; */
     align-items: center;
     margin: 7px 0;
     font-size: 15px;

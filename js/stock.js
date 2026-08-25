@@ -1,6 +1,6 @@
 let stockListData = [];
 let lowStockOnly = false;
-
+let expiringSoonOnly = false;
 
 
 async function loadStock(){
@@ -426,10 +426,33 @@ const lowStockMatch =
         && product.quantity < 12
     );
 
+
+    const today = new Date();
+
+const sixMonths = new Date();
+
+sixMonths.setMonth(
+    today.getMonth() + 6
+);
+
+const expiringSoonMatch =
+    !expiringSoonOnly ||
+    product.expiry_dates.some(date => {
+
+        const expiry = new Date(date);
+
+        return (
+            expiry <= sixMonths &&
+            expiry >= today
+        );
+
+    });
+
             return searchMatch &&
                    brandMatch &&
                    categoryMatch &&
-                   lowStockMatch;
+                   lowStockMatch &&
+                   expiringSoonMatch;
 
         });
 
@@ -469,6 +492,24 @@ document
         this.classList.toggle(
             "active",
             lowStockOnly
+        );
+
+        applyFilters();
+
+    }
+);
+
+document
+.getElementById("expiringSoonBtn")
+.addEventListener(
+    "click",
+    function(){
+
+        expiringSoonOnly = !expiringSoonOnly;
+
+        this.classList.toggle(
+            "active",
+            expiringSoonOnly
         );
 
         applyFilters();

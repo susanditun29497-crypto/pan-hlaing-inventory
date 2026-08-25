@@ -9,6 +9,7 @@ brands: [
 "Friskies",
 "Nekko",
 "Nekko Gold",
+"Nekko 7+",
 "Felix",
 "Bellotta",
 "Ciao",
@@ -24,7 +25,10 @@ brands: [
 "Paully",
 "Hi-Life",
 "Temptations",
-"CIAO Sugoi"
+"CIAO Sugoi",
+"Pramy",
+"Choo Choo",
+"Juicy Bites"
 ],
 
 
@@ -69,6 +73,8 @@ weights:{
 "1kg",
 "1.1kg",
 "1.2kg",
+"1.3kg",
+"1.4kg",
 "1.5kg",
 "2kg",
 "4kg",
@@ -111,6 +117,7 @@ weights:{
 ],
 
 "Snack":[
+    "11g",
     "100g",
     "200g"
 ],
@@ -150,7 +157,8 @@ products:{
 "Sterilised",
 "Renal",
 "Sensible",
-"Fit"
+"Fit",
+"Sterilised"
 
 ],
 
@@ -180,6 +188,49 @@ products:{
 
 
 
+"Juicy Bites":{
+
+"Snack":[
+
+"Shrimp Flavor & Seafood Mix Flavor",
+"Fish Flavor & Clam Flavor",
+"Homemade Broth Flavor",
+"Crab Flavor & Scallop Flavor",
+"Chicken Flavor & Tuna Flavor"
+
+]
+
+},
+
+
+"Choo Choo":{
+
+"Can":[
+
+"Booster Folic Acid",
+"Booster DHA",
+"Kidney Care Protein Soup"
+
+]
+
+},
+
+
+"Pramy":{
+
+"Wet Food":[
+
+"Beauty Tuna Meat Topping Chicken in Gravy",
+"Indoor Tuna Meat Topping Crab Stick in Gravy",
+"Balance Tuna Meat in Gravy",
+"Bone and Joint Tuna Meat Topping Shirasu in Gravy",
+"Immunity Chicken Meat Pumpkin and Carrot in Gravy"
+
+]
+
+},
+
+
 "Me-O":{
 
 "Dry Food":[
@@ -197,7 +248,10 @@ products:{
 "Mackerel with Sardine",
 "Tuna with White Fish",
 "Ocean Fish",
-"Makerel in Jelly"
+"Makerel in Jelly",
+"Grilled Fish",
+"Sardine with Seabass in Jelly",
+"Chicken and liver Chuck in Gravy"
 
 ]
 
@@ -241,7 +295,16 @@ products:{
 
 "Dry Food":[
 
-"Chicken Tuna and Rice"
+"Chicken Tuna and Rice",
+"Lamb Tuna and Rice",
+"Grain Free Salmon and Tuna",
+"Growth and Balance with Chicken and Egg",
+"Mother and Kitten",
+"Indoor Formula Tukey",
+"Fusion Muti-Vitamin - Chicken & Pumpkin",
+"Immunity - Tuna and Sweet Potato",
+"Beauty - Salmon and Sweet Potato"
+
 
 ],
 
@@ -289,6 +352,7 @@ products:{
 
 "Wet Food":[
 
+    "Tuna in Gravy",
 "Tuna topping Shirasu in Gravy",
 "Tuna topping Salmon in Gravy",
 "Tuna Topping Katsuobushi in Gravy",
@@ -306,6 +370,21 @@ products:{
 ]
 
 },
+
+
+"Nekko 7+":{
+
+"Wet Food":[
+
+"Tuna in Gravy",
+"Tuna topping Chicken in Jelly",
+"Tuna Topping Katsuobushi in Jelly",
+"Tuna Topping Chicken Meat in Gravy"
+
+]
+
+},
+
 
 
 "Nekko Gold":{
@@ -338,11 +417,14 @@ products:{
 
 "Tuna Topping Anchovy in Jelly",
 "Tuna and Chicken",
+"Tuna",
 "Mackerel",
 "Tuna Topping Saba in Jelly",
 "Tuna and Salmon",
 "Tuna Topping Shrimp in Jelly",
-"Tuna Topping Shirasu in Jelly"
+"Tuna Topping Shirasu in Jelly",
+"Kitten Tuna mousse",
+"Kitten Chicken mousse"
 
 ]
 
@@ -373,9 +455,11 @@ products:{
 
 "Wet Food":[
 
-"50g Grilled tuna flake in Jelly with whitebait and scallop flavor",
-"50g Grilled tuna flake in Jelly with scallop and slice bonito flavor",
-"50g Grilled Chicken flake with crab stick in Jelly Scallop Flavor",
+"50g Grilled tuna flake in Jelly with whitebait and scallop",
+"50g Grilled tuna flake in Jelly with scallop and slice bonito",
+"50g Grilled Chicken flake with crab stick in Jelly Scallop",
+"50g IC232 CIAO Grilled Tuna Flake in Jelly with Scallop",
+"50g IC236 grilled tuna Japanese dashi broth and jelly",
 "Tuna (Katsuo) and Chicken Fillet Topping Dried Bonito",
 "Tuna and Chicken Fillet Scallop Flavor",
 "Soup Chicken Fillet Topping Dried Bonito",
@@ -471,10 +555,12 @@ products:{
 "Tuna and Chicken Drumstick Flake in Jelly",
 "Tuna with Bonito in Jelly",
 "Tuna with Chicken Flake in Jelly",
+"Tuna in Jelly",
+"Tuna with crabstick in Jelly",
 "Tuna with Chicken Flake in Gravy",
 "Tuna in Gravy",
-"Tuna with Salmon in Gravy",
-"Tuna with crabstick in Jelly"
+"Tuna with Salmon in Gravy"
+
 
 ]
 

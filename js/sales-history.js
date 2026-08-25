@@ -313,7 +313,8 @@ document.getElementById("totalSales").innerHTML =
 "Sales: " + total.toLocaleString() +
 " MMK | Profit: " +
 totalProfit.toLocaleString() +
-" MMK";
+" MMK | Transactions: " +
+Object.keys(grouped).length; ;
 
 
 }
