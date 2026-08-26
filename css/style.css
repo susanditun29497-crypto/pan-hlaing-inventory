@@ -591,3 +591,21 @@ gap: 1px; */
 #salesList .card {
     padding-left: 0;
 }
+
+/* =========================
+   SALES ANALYSIS FILTERS
+   ========================= */
+
+.analysisFilterRow input[type="date"]{
+    width:150px;
+    flex:none;
+}
+
+.analysisFilterRow select{
+    width:170px;
+    flex:none;
+}
+
+.analysisFilterRow button{
+    white-space:nowrap;
+}

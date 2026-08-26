@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sales Analysis</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<h1>
+📊 Sales Analysis
+</h1>
+
+
+<div class="salesFilterRow analysisFilterRow">
+
+<input
+type="date"
+id="fromDate"
+>
+
+
+<input
+type="date"
+id="toDate"
+>
+
+
+<select id="brandFilter">
+
+<option value="">
+All Brands
+</option>
+
+</select>
+
+
+<select id="productFilter">
+
+<option value="">
+All Products
+</option>
+
+</select>
+
+
+
+<select id="categoryFilter">
+
+<option value="">
+All Categories
+</option>
+
+</select>
+
+
+<button id="resetFilters">
+Reset
+</button>
+
+
+</div>
+
+
+<h3 id="analysisSummary">
+
+Sales: 0 | Units Sold: 0
+
+</h3>
+
+
+<div id="analysisList">
+
+Loading...
+
+</div>
+
+
+<br>
+
+
+<button onclick="location.href='index.html'">
+Back
+</button>
+
+
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="js/supabase.js"></script>
+
+<script src="js/sales-analysis.js"></script>
+
+
+</body>
+
+</html>
