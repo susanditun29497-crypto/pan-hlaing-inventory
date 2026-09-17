@@ -214,6 +214,15 @@ function applyAnalysisFilters(){
     document.getElementById("categoryFilter").value;
 
 
+// Product search
+const productSearch =
+    document
+        .getElementById("productSearch")
+        .value
+        .toLowerCase()
+        .trim();
+
+
     const filtered =
         allSales.filter(item => {
 
@@ -279,6 +288,28 @@ function applyAnalysisFilters(){
 ){
 
     return false;
+
+}
+
+if(productSearch){
+
+    const searchText =
+        `${brand} ${product.food_type} ${product.variety} ${product.weight}`
+        .toLowerCase();
+
+    const searchWords =
+        productSearch.split(/\s+/);
+
+    const matched =
+        searchWords.every(word =>
+            searchText.includes(word)
+        );
+
+    if(!matched){
+
+        return false;
+
+    }
 
 }
 
@@ -517,6 +548,13 @@ document
         applyAnalysisFilters
     );
 
+    document
+    .getElementById("productSearch")
+    .addEventListener(
+        "input",
+        applyAnalysisFilters
+    );
+
 
 // ==========================
 // RESET
@@ -549,6 +587,10 @@ document
 
             document.getElementById(
     "categoryFilter"
+).value = "";
+
+document.getElementById(
+    "productSearch"
 ).value = "";
 
 

@@ -28,7 +28,12 @@ brands: [
 "CIAO Sugoi",
 "Pramy",
 "Choo Choo",
-"Juicy Bites"
+"Juicy Bites",
+"Moochie",
+"Kandy",
+"Regalos",
+"Toy"
+
 ],
 
 
@@ -95,6 +100,7 @@ weights:{
 
 "Creamy":[
     "5 pcs",
+    "1 pc",
 "20 pcs",
 "25 pcs",
 "40 pcs",
@@ -118,16 +124,26 @@ weights:{
 
 "Snack":[
     "11g",
+    "65g",
     "100g",
     "200g"
 ],
 
-"Toy":[]
+"Toy":[
+
+    "1",
+]
 
 },
 
 
 products:{
+
+    "Toy":{
+        "Toy": [
+            "Cat Scratch Board"
+        ]
+    },
 
 
 "Temptations":{
@@ -142,6 +158,27 @@ products:{
         "Prebiotics with Dried Bonito Chicken",
         "Prebiotics with Dried Bonito Tuna",
         "Prebiotics with Dried Bonito Salmon"
+    ]
+},
+
+"Kandy":{
+    "Wet Food":[
+    
+        "Salmon and Tuna White Meat",
+        "Tuna White Meat"
+    ]
+},
+
+
+"Regalos":{
+    "Wet Food":[
+    
+        "Tuna in Jelly Topping Chicken Fillet",
+        "Tuna in Jelly Topping Salmon",
+        "Tuna in Jelly Topping Shirasu",
+        "Tuna in Jelly Topping Shrimp",
+        "Tuna in Jelly Topping Snapper",
+        "Tuna in Jelly"
     ]
 },
 
@@ -181,6 +218,27 @@ products:{
 "Indoor Advantage with Chicken",
 "Healthy Adult with Chicken",
 "Urinary Care with Chicken in Gravy"
+
+]
+
+},
+
+
+
+"Moochie":{
+
+"Wet Food":[
+
+"Hairball Care",
+"Beauty Skin & Coat",
+"Urinary Care",
+"Tuna & Salmon Recipe in Jelly",
+"Tuna & Kanikama Recipe in Jelly",
+"Tuna & Chicken Breast Recipe in Jelly",
+"Tuna Receipe in Gravy",
+"Tuna and Green Lipped Mussel Recipe in Gravy",
+"Tuna & Wakame Recipe in Gravy",
+"Tuna & Scallop Recipe in Jelly"
 
 ]
 
@@ -251,7 +309,26 @@ products:{
 "Makerel in Jelly",
 "Grilled Fish",
 "Sardine with Seabass in Jelly",
-"Chicken and liver Chuck in Gravy"
+"Chicken and liver Chuck in Gravy",
+"Tuna in Jelly Kitten",
+"Tuna with Chicken in Jelly",
+"Tuna in Jelly"
+
+
+],
+
+"Creamy": [
+
+    "Crab Flavor",
+    "Tuna Bonito Flavor",
+    "Chicken & Pumpkin Flavor",
+    "Tuna Maguro Flavor",
+    "Tuna Katsuo Flavor",
+    "Tuna with Scallop Flavor",
+    "Tuna with tomato Flavor",
+    "Chicken and Liver",
+    "Salmon Flavor",
+    "Chicken and Liver with Goat Milk"
 
 ]
 
@@ -341,7 +418,11 @@ products:{
 "Tuna in Jelly",
 "Salmon in Jelly",
 "Chicken in Jelly",
+"Mackeral in Jelly",
 "Chicken in Gravy",
+"Salmon in Gravy",
+"Mackeral in Gravy",
+"Tuna in Gravy"
 
 ]
 
@@ -377,9 +458,12 @@ products:{
 "Wet Food":[
 
 "Tuna in Gravy",
+"Tuna Topping Chicken Meat in Gravy",
 "Tuna topping Chicken in Jelly",
 "Tuna Topping Katsuobushi in Jelly",
-"Tuna Topping Chicken Meat in Gravy"
+"Tuna in Jelly",
+"Tuna Topping Salmon in Jelly"
+
 
 ]
 
@@ -404,7 +488,10 @@ products:{
 
 "Tuna Topping Seafood Platter in Gravy",
 "Tuna and Chicken Topping Shrimp and Scallop in Jelly",
-"Tuna and Chicken in Gravy"
+"Tuna and Chicken in Gravy",
+"Tuna Topping Salmon in Gravy",
+"Tuna Creamy Topping Salmon"
+
 
 ]
 
@@ -460,12 +547,17 @@ products:{
 "50g Grilled Chicken flake with crab stick in Jelly Scallop",
 "50g IC232 CIAO Grilled Tuna Flake in Jelly with Scallop",
 "50g IC236 grilled tuna Japanese dashi broth and jelly",
-"Tuna (Katsuo) and Chicken Fillet Topping Dried Bonito",
+"40g IC217",
+"40g IC205 Chicken Fillet Scallop Flavor",
+"40g IC209",
+"40g IC218",
+"40g IC204 Tuna (Katsuo) Chicken Fillet Topping Dried Bonito",
+"40g IC201 Tuna (Maguro) Chicken Fillet scallop flavor",
+"40g IC202 Tuna (Maguro) CHicken Fillet Topping Shirasu",
 "Tuna and Chicken Fillet Scallop Flavor",
 "Soup Chicken Fillet Topping Dried Bonito",
 "Soup Chicken Fillet and Maguro Topping Scallop with Fiber",
 "Soup Chicken Fillet and Maguro Topping Dried Bonito",
-"Tuna (Maguro) and Chicken Fillet scallop flavor",
 "Soup Tuna (Maguro) and Scallop Topping Chicken Fillet",
 "Soup Tuna (Katsuo) and Scallop Topping Chicken Fillet",
 "Chicken Fillet with Crab Stick Scallop Flavor",
@@ -487,6 +579,14 @@ products:{
 "Chicken Fillet Variety 40 pcs",
 "Tuna Variety Maguro 40 pcs",
 "Tuna Variety Maguro Mix Katsuo 40 pcs"
+
+],
+
+"Snack":
+[
+    "IMC 154 Tuna with Scallop Flavor Pudding",
+    "IMC 152 Tuna(skipjack) Pudding",
+    "IMC 151 Tuna (yellowfin) Pudding"
 
 ]
 
@@ -559,7 +659,8 @@ products:{
 "Tuna with crabstick in Jelly",
 "Tuna with Chicken Flake in Gravy",
 "Tuna in Gravy",
-"Tuna with Salmon in Gravy"
+"Tuna with Salmon in Gravy",
+"Shrimp in Gravy"
 
 
 ]
@@ -610,7 +711,8 @@ products:{
 "Tuna and Salmon Mix Tuna and Seafood Plus Lysine",
 "Toro Plus White Meat Tuna with Lobster",
 "Toro Plus White Meat Tuna with Katsuobushi",
-"Toro Plus White Meat Tuna with Alaska Salmon"
+"Toro Plus White Meat Tuna with Alaska Salmon",
+"Toro Plus White Meat Tuna with King Crab"
 
 ],
 

@@ -229,6 +229,16 @@ document
 
 e.preventDefault();
 
+const saveButton =
+document.querySelector('#salesForm button[type="submit"]');
+
+
+// Prevent duplicate clicks while saving
+if(saveButton.disabled){
+
+return;
+
+}
 
 
 if(saleItems.length === 0){
@@ -238,6 +248,11 @@ alert("Please add at least one product");
 return;
 
 }
+
+
+// Show immediate feedback
+saveButton.disabled = true;
+saveButton.textContent = "⏳ Saving Sale...";
 
 
 
@@ -428,6 +443,14 @@ catch(error){
 console.log(error);
 
 alert(error.message);
+
+}
+
+
+finally{
+
+saveButton.disabled = false;
+saveButton.textContent = "Save Sale";
 
 }
 

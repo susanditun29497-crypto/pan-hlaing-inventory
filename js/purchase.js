@@ -155,6 +155,22 @@ document
 e.preventDefault();
 
 
+// Prevent duplicate clicks while saving
+const saveButton =
+document.querySelector('#purchaseForm button[type="submit"]');
+
+if(saveButton.disabled){
+
+    return;
+
+}
+
+
+// Show immediate feedback
+saveButton.disabled = true;
+saveButton.textContent = "⏳ Saving Purchase...";
+
+
 const brandName =
 document.getElementById("brand").value;
 
@@ -367,6 +383,12 @@ catch(error){
 console.log(error);
 
 alert(error.message);
+
+}
+finally{
+
+saveButton.disabled = false;
+saveButton.textContent = "Save Purchase";
 
 }
 
